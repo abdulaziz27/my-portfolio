@@ -1,26 +1,141 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Deep Obsidian Palette */
+  --background: #050505;
+  --foreground: #ededed;
+  
+  --primary: #050505; 
+  --accent: #00f0ff; /* Electric Blue */
+  --accent-glow: rgba(0, 240, 255, 0.5);
+  
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(5, 5, 5, 0.7);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Utilities */
+.text-glow {
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 4s linear infinite;
+}
+
+/* CRT Scanline Animation */
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}
+
+.animate-scan {
+  animation: scan 3s linear infinite;
+}
+
+/* Reduce Motion Overrides */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.reduce-motion .bg-grain,
+.reduce-motion .animate-pulse,
+.reduce-motion .animate-spin-slow,
+.reduce-motion .animate-scan {
+    animation: none !important;
+}
+
+/* Film Grain Animation */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+.bg-grain {
+
+  position: fixed;
+
+  top: -50%;
+
+  left: -50%;
+
+  width: 200%;
+
+  height: 200%;
+
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/Noise.png"); /* Standard noise texture */
+
+  background-repeat: repeat;
+
+  opacity: 0.03;
+
+  animation: grain 8s steps(10) infinite;
+
+  pointer-events: none;
+
+  z-index: 9999;
+
+}
+
+
+
+@media (min-width: 1024px) {
+
+  body {
+
+    cursor: none; /* Hide default cursor */
+
+  }
+
+  
+
+  a, button, .cursor-pointer {
+
+    cursor: none;
+
+  }
+
 }

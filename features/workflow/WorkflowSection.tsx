@@ -64,16 +64,17 @@ export default function WorkflowSection() {
 
     // Animate Steps (Reveal)
     const steps = gsap.utils.toArray(".workflow-step");
-    steps.forEach((step: any) => {
+    steps.forEach((step: unknown) => {
+      const el = step as HTMLElement;
       gsap.fromTo(
-        step,
+        el,
         { opacity: 0, x: -50 },
         {
           opacity: 1,
           x: 0,
           duration: 0.5,
           scrollTrigger: {
-            trigger: step,
+            trigger: el,
             start: "top 70%",
             toggleActions: "play none none reverse",
           },

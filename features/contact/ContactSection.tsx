@@ -32,11 +32,11 @@ export default function ContactSection() {
                 <div className="space-y-4">
                     <h3 className="text-xs font-mono text-gray-500 uppercase tracking-widest">Secure Channels</h3>
                     <div className="flex flex-col gap-2">
-                        <a href="mailto:contact@architect.dev" className="group flex items-center gap-4 p-4 border border-white/10 hover:border-accent hover:bg-white/5 transition-all">
+                        <a href="mailto:abdulazizz.dev@gmail.com" className="group flex items-center gap-4 p-4 border border-white/10 hover:border-accent hover:bg-white/5 transition-all">
                             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                            <span className="font-mono text-sm text-gray-300 group-hover:text-white">contact@architect.dev</span>
+                            <span className="font-mono text-sm text-gray-300 group-hover:text-white">abdulazizz.dev@gmail.com</span>
                         </a>
-                        <a href="https://linkedin.com" target="_blank" className="group flex items-center gap-4 p-4 border border-white/10 hover:border-accent hover:bg-white/5 transition-all">
+                        <a href="https://www.linkedin.com/in/itsabdulaziz" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 border border-white/10 hover:border-accent hover:bg-white/5 transition-all">
                             <span className="w-2 h-2 bg-blue-500 rounded-full" />
                             <span className="font-mono text-sm text-gray-300 group-hover:text-white">LinkedIn Secure Link</span>
                         </a>

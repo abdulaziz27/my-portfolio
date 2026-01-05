@@ -3,7 +3,7 @@
 import { Project } from "./projectData";
 import { useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import SecureLink from "@/components/ui/SecureLink";
 
 interface ProjectCardProps {
   project: Project;
@@ -13,9 +13,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   return (
-    <Link
+    <SecureLink
       href={`/work/${project.id}`}
-      passHref
       className={`
         group relative overflow-hidden rounded-none border border-white/5 bg-black/40 backdrop-blur-md transition-all duration-500 hover:border-transparent cursor-pointer block
         ${project.colSpan} ${project.rowSpan}
@@ -79,7 +78,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               background: `radial-gradient(circle at center, ${project.color}, transparent 80%)`
           }}
         />
-      </div>
-    </Link>
-  );
-}
+            </div>
+          </SecureLink>
+        );
+      }
+      

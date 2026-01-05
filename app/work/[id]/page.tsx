@@ -62,23 +62,22 @@ export default async function PhotoPage({ params }: { params: Params }) {
     "author": {
       "@type": "Person",
       "name": "Digital Architect",
-      "jobTitle": "Senior Creative Developer"
+      "jobTitle": "Senior Creative Developer",
+      "url": "https://abdulazizz.com"
     },
     "image": project.image,
-    "datePublished": "2024-01-01" // Placeholder or dynamic if available
+    "url": `https://abdulazizz.com/work/${project.id}`
   };
 
   return (
-    <div className="container mx-auto py-24 px-4">
+    <main className="min-h-screen bg-black">
         {/* Inject Schema */}
         <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         
-      <div className="border border-white/10 rounded-lg overflow-hidden">
-        <ProjectDetailView id={id} />
-      </div>
-    </div>
+      <ProjectDetailView id={id} />
+    </main>
   );
 }

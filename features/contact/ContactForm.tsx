@@ -3,6 +3,7 @@
 import { useActionState, useEffect, useRef, useState } from "react";
 import { sendContactForm, ContactState } from "@/actions/sendEmail";
 import { useFormStatus } from "react-dom";
+import { useToast } from "@/components/ui/ToastProvider";
 
 const initialState: ContactState = {
   success: false,
@@ -40,16 +41,22 @@ export default function ContactForm() {
   const [logs, setLogs] = useState<string[]>([]);
   const formRef = useRef<HTMLFormElement>(null);
   const [mounted, setMounted] = useState(false);
+  const { showToast } = useToast();
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (state.success) {
       setLogs(["Transmitting packet...", "Handshake successful.", "Encrypted.", "Payload delivered."]);
       formRef.current?.reset();
+      showToast("Message sent successfully", "success");
     } else if (state.message) {
         setLogs([`Error: ${state.message}`, "Transmission aborted."]);
+        showToast(state.message || "Failed to send message", "error");
     }
-  }, [state]);
+  }, [state, showToast]);
 
   // Prevent Hydration Mismatch from Browser Extensions (SharkLocker, etc.)
   if (!mounted) {

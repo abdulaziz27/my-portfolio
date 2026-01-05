@@ -46,7 +46,7 @@ export default function AboutSection() {
             <div className="space-y-4 text-gray-400 font-light text-lg leading-relaxed">
                 <p>
                     <span className="text-white font-medium">Bachelor of Computer Science</span> with a focus on scalable systems and high-performance UI. 
-                    I don't just write code; I architect solutions that solve real-world SME constraints across Southeast Asia and Japan.
+                    I don&apos;t just write code; I architect solutions that solve real-world SME constraints across Southeast Asia and Japan.
                 </p>
                 <p>
                     From <span className="text-accent font-mono text-base">ERP SYSTEM ARCHITECTURE</span> to <span className="text-accent font-mono text-base">HIGH-END E-COMMERCE</span>, 

@@ -81,3 +81,12 @@ When I ask you to generate a component, always refer back to this GEMINI.md to e
 - **Functionality:** - Connect links to Section IDs (#hero, #work, #map, #contact) using Smooth Scroll.
   - Implement a "Glass-morphism Mobile Menu" for smaller screens.
   - Active State: The nav links must glow when the user is in that specific section (Intersection Observer).
+
+## 16. DYNAMIC PROJECT PAGES (THE CASE STUDY)
+- **Routing:** Use Next.js Dynamic Routes (`/work/[id]`). Disable Intercepting Routes/Modals.
+- **Layout Logic:** - **Header:** Full-screen hero with the main project mockup and oversized title.
+  - **Project Meta:** A HUD-style sidebar or row showing (Country, Tech Stack, Category, Year).
+  - **Narrative:** "The Challenge" vs "The Solution" text blocks.
+  - **Gallery:** A "High-Resolution Showcase" using a masonry grid or a large vertical scroll of screenshots.
+- **Transitions:** Use GSAP "Page Transitions". When moving from Home to Detail, use a "curtain" or "pixel-dissolve" effect to maintain the 'Gahar' aesthetic.
+- **Image Optimization:** Use Next/Image with priority loading for project screenshots to ensure zero-lag visual delivery.

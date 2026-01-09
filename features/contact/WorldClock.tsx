@@ -12,14 +12,31 @@ const timezones = [
 
 export default function WorldClock() {
   const [time, setTime] = useState<Date | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     setTime(new Date());
     const interval = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(interval);
   }, []);
 
-  if (!time) return <div className="animate-pulse text-xs text-accent">SYNCING SATELLITES...</div>;
+  // Prevent hydration mismatch - render placeholder on server
+  if (!mounted || !time) {
+    return (
+      <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
+        {timezones.map((tz) => (
+          <div key={tz.code} className="flex justify-between items-center border border-white/5 bg-white/5 p-2 px-3 backdrop-blur-sm">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-mono text-gray-500 font-bold w-6">{tz.code}</span>
+              <span className="text-[10px] font-mono text-gray-300">{tz.city}</span>
+            </div>
+            <div className="text-xs font-mono text-accent animate-pulse">--:--</div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
@@ -29,7 +46,7 @@ export default function WorldClock() {
                 <span className="text-[10px] font-mono text-gray-500 font-bold w-6">{tz.code}</span>
                 <span className="text-[10px] font-mono text-gray-300 group-hover:text-white transition-colors">{tz.city}</span>
             </div>
-            <div className="text-xs font-mono text-accent">
+            <div className="text-xs font-mono text-accent" suppressHydrationWarning>
                 {time.toLocaleTimeString("en-US", { 
                     timeZone: tz.zone, 
                     hour: '2-digit', 

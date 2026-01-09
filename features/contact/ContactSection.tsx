@@ -45,7 +45,7 @@ export default function ContactSection() {
 
                 {/* World Clock Widget */}
                 <div>
-                    <h3 className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Global Operations Status</h3>
+                    <h3 className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4">Time Zones</h3>
                     <WorldClock />
                 </div>
             </div>

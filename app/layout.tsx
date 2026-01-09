@@ -22,12 +22,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Architect | Senior Creative Developer",
-  description: "Elite-Tier Portfolio for High-End Web Solutions. Specializing in ERP, POS, and E-commerce for International Markets.",
+  description: "Portfolio for Web Solutions. Specializing in ERP, POS, and E-commerce development.",
   keywords: ["Software Engineer", "Creative Developer", "Next.js", "Three.js", "Indonesia", "Singapore", "Japan"],
   metadataBase: new URL('https://abdulazizz.com'),
   openGraph: {
     title: "Digital Architect | Senior Creative Developer",
-    description: "Elite-Tier Portfolio for High-End Web Solutions. Specializing in ERP, POS, and E-commerce for International Markets.",
+    description: "Portfolio for Web Solutions. Specializing in ERP, POS, and E-commerce development.",
     type: "profile",
     locale: "en_US",
     url: "https://abdulazizz.com",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Digital Architect | Senior Creative Developer",
-    description: "Elite-Tier Portfolio for High-End Web Solutions. Specializing in ERP, POS, and E-commerce for International Markets.",
+    description: "Portfolio for Web Solutions. Specializing in ERP, POS, and E-commerce development.",
     creator: "@itsabdulaziz",
     images: ["https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&h=630"],
   },
@@ -76,7 +76,7 @@ export default function RootLayout({
     "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b", // Branding Image
     "url": "https://abdulazizz.com",
     "jobTitle": "Senior Creative Developer",
-    "description": "Specializing in High-Performance WebGL, ERP Systems, and International Commerce Solutions.",
+    "description": "Specializing in High-Performance WebGL, ERP Systems, and E-commerce Solutions.",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "ID",
@@ -100,7 +100,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >

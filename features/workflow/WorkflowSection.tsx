@@ -21,8 +21,8 @@ const steps = [
   },
   {
     id: "03",
-    title: "INTERNATIONAL DEV",
-    description: "Agile development sprints with a focus on i18n, performance optimization, and clean code.",
+    title: "DEVELOPMENT",
+    description: "Agile development sprints with a focus on performance optimization and clean code.",
     icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
   },
   {

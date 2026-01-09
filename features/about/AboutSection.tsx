@@ -20,6 +20,7 @@ export default function AboutSection() {
               src="/profile.jpg" 
               alt="Architect Profile"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               priority
               className="object-cover grayscale contrast-125 transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0"
             />
@@ -36,14 +37,14 @@ export default function AboutSection() {
             className="space-y-8"
           >
             <div>
-                <h3 className="text-accent font-mono text-sm tracking-[0.3em] uppercase mb-4">The Architect</h3>
+                <p className="text-accent font-mono text-sm tracking-[0.3em] uppercase mb-4">The Architect</p>
                 <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter leading-tight">
                     BRIDGING BUSINESS <br/> 
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-600">WITH ENGINEERING.</span>
                 </h2>
             </div>
 
-            <div className="space-y-4 text-gray-400 font-light text-lg leading-relaxed">
+            <div className="space-y-4 text-gray-300 font-light text-lg leading-relaxed">
                 <p>
                     <span className="text-white font-medium">Bachelor of Computer Science</span> with a focus on scalable systems and high-performance UI. 
                     I don&apos;t just write code; I architect solutions that solve real-world SME constraints across Southeast Asia and Japan.
@@ -56,19 +57,19 @@ export default function AboutSection() {
 
             <div className="grid grid-cols-2 gap-8 pt-8 border-t border-white/5 font-mono text-xs uppercase tracking-widest">
                 <div>
-                    <span className="text-gray-600 block mb-2">Education</span>
+                    <span className="text-gray-300 block mb-2">Education</span>
                     <span className="text-white">B.Comp.Sc (Computer Science)</span>
                 </div>
                 <div>
-                    <span className="text-gray-600 block mb-2">Specialization</span>
+                    <span className="text-gray-400 block mb-2">Specialization</span>
                     <span className="text-white">Full-stack & Interactive Design</span>
                 </div>
                 <div>
-                    <span className="text-gray-600 block mb-2">Global Experience</span>
+                    <span className="text-gray-400 block mb-2">Global Experience</span>
                     <span className="text-white">ID / VN / JP / MY / SG</span>
                 </div>
                 <div>
-                    <span className="text-gray-600 block mb-2">Frameworks</span>
+                    <span className="text-gray-400 block mb-2">Frameworks</span>
                     <span className="text-white">React 19 / Next 16 / Three.js</span>
                 </div>
             </div>

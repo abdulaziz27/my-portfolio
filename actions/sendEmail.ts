@@ -39,7 +39,10 @@ export async function sendContactForm(prevState: ContactState, formData: FormDat
   // Simulate network delay for "Terminal Effect"
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
-  console.log("Transmission Received:", validated.data);
+  // Only log in development
+  if (process.env.NODE_ENV === 'development') {
+    console.log("Transmission Received:", validated.data);
+  }
 
   return {
     success: true,

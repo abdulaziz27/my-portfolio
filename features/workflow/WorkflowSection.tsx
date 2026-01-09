@@ -144,13 +144,13 @@ export default function WorkflowSection() {
                         {/* Content Side */}
                         <div className={`w-full md:w-1/2 pl-12 md:pl-0 ${index % 2 === 0 ? 'md:pl-12 text-left' : 'md:pr-12 md:text-right'}`}>
                             <div className="bg-black/40 backdrop-blur-md border border-white/10 p-8 hover:border-accent/50 transition-colors group">
-                                <h3 className="text-4xl font-bold text-gray-700 mb-2 group-hover:text-white transition-colors">
+                                <span className="text-4xl font-bold text-gray-300 mb-2 group-hover:text-white transition-colors block">
                                     {step.id}
-                                </h3>
-                                <h4 className="text-xl font-bold text-white mb-3 tracking-wide">
+                                </span>
+                                <h3 className="text-xl font-bold text-white mb-3 tracking-wide">
                                     {step.title}
-                                </h4>
-                                <p className="text-gray-400 font-light leading-relaxed text-sm">
+                                </h3>
+                                <p className="text-gray-300 font-light leading-relaxed text-sm">
                                     {step.description}
                                 </p>
                             </div>

@@ -53,8 +53,8 @@ export default function TechStatusBar() {
                 <span className={`
                     px-2 py-[2px] text-[10px] border 
                     ${tech.status === 'ONLINE' ? 'border-accent text-accent' : 
-                      tech.status === 'LOADING' ? 'border-yellow-500 text-yellow-500' : 
-                      'border-gray-500 text-gray-500'}
+                      tech.status === 'LOADING' ? 'border-yellow-400 text-yellow-400' : 
+                      'border-gray-400 text-gray-400'}
                 `}>
                     {tech.status}
                 </span>
@@ -74,7 +74,7 @@ export default function TechStatusBar() {
             
             {/* Level Label */}
             <div className="flex justify-end mt-1">
-                <span className="text-[10px] text-gray-500">{tech.level}% CAPACITY</span>
+                <span className="text-[10px] text-gray-400">{tech.level}% CAPACITY</span>
             </div>
         </div>
       ))}

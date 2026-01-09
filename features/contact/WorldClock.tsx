@@ -28,7 +28,7 @@ export default function WorldClock() {
         {timezones.map((tz) => (
           <div key={tz.code} className="flex justify-between items-center border border-white/5 bg-white/5 p-2 px-3 backdrop-blur-sm">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-mono text-gray-500 font-bold w-6">{tz.code}</span>
+              <span className="text-[10px] font-mono text-gray-300 font-bold w-6">{tz.code}</span>
               <span className="text-[10px] font-mono text-gray-300">{tz.city}</span>
             </div>
             <div className="text-xs font-mono text-accent animate-pulse">--:--</div>
@@ -43,7 +43,7 @@ export default function WorldClock() {
       {timezones.map((tz) => (
         <div key={tz.code} className="flex justify-between items-center border border-white/5 bg-white/5 p-2 px-3 backdrop-blur-sm hover:border-accent/30 transition-colors group">
             <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono text-gray-500 font-bold w-6">{tz.code}</span>
+                <span className="text-[10px] font-mono text-gray-300 font-bold w-6">{tz.code}</span>
                 <span className="text-[10px] font-mono text-gray-300 group-hover:text-white transition-colors">{tz.city}</span>
             </div>
             <div className="text-xs font-mono text-accent" suppressHydrationWarning>

@@ -19,7 +19,7 @@ export default function TechSection() {
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tighter">
                     COMMAND <span className="text-accent text-glow">CENTER</span>
                 </h2>
-                <p className="text-gray-500 font-mono text-sm tracking-widest uppercase">
+                <p className="text-gray-300 font-mono text-sm tracking-widest uppercase">
                     Tech Stack & Mastery Distribution
                 </p>
             </div>

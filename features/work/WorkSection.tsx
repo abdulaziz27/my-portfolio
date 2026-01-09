@@ -53,7 +53,7 @@ export default function WorkSection() {
           SELECTED <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-800">WORKS</span>
         </h2>
         <div className="h-[1px] w-full bg-white/10" />
-        <div className="flex justify-between mt-4 text-xs md:text-sm text-gray-500 font-mono uppercase tracking-widest">
+        <div className="flex justify-between mt-4 text-xs md:text-sm text-gray-400 font-mono uppercase tracking-widest">
             <span>Archive 2020-2025</span>
             <span>15 Deployments</span>
         </div>

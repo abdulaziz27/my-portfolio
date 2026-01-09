@@ -25,7 +25,10 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error("ErrorBoundary caught an error:", error, errorInfo);
+    // Error logged for debugging - only in development
+    if (process.env.NODE_ENV === 'development') {
+      console.error("ErrorBoundary caught an error:", error, errorInfo);
+    }
   }
 
   render() {
@@ -65,7 +68,7 @@ export default class ErrorBoundary extends Component<Props, State> {
                     {this.state.error?.message || "An unexpected error occurred"}
                   </span>
                 </p>
-                <p className="pt-4 text-gray-500">
+                <p className="pt-4 text-gray-400">
                   <span className="text-accent">{">"}</span> Attempting recovery...
                 </p>
               </div>

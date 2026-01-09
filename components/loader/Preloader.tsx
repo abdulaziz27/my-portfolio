@@ -60,7 +60,7 @@ export default function Preloader() {
                 />
             </div>
             
-            <div className="mt-2 flex justify-between text-[10px] text-gray-600 tracking-widest">
+            <div className="mt-2 flex justify-between text-[10px] text-gray-400 tracking-widest">
                 <span>SYSTEM_BOOT_SEQUENCE</span>
                 <span>{Math.round((index / bootSequences.length) * 100)}%</span>
             </div>

@@ -38,6 +38,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             src={project.image} 
             alt={project.title}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
           />
           
@@ -55,7 +56,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <span className="text-[10px] font-mono tracking-[0.4em] text-accent group-hover:text-white transition-colors uppercase">
                   {project.category}
               </span>
-              <span className="text-[10px] font-mono text-gray-600">
+              <span className="text-[10px] font-mono text-gray-300">
                   [{project.id.toString().padStart(2, '0')}]
               </span>
           </div>
@@ -65,7 +66,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <h3 className="text-3xl font-bold text-white mb-2 leading-none tracking-tighter">
                   {project.title}
               </h3>
-              <p className="text-xs text-gray-400 max-w-[80%] leading-relaxed group-hover:text-gray-200 transition-colors">
+              <p className="text-xs text-gray-300 max-w-[80%] leading-relaxed group-hover:text-gray-200 transition-colors">
                   {project.description}
               </p>
           </div>

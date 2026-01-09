@@ -13,7 +13,6 @@ const navLinks = [
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -38,28 +37,38 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
-  // Smart Hide Logic
+  // Smart Hide Logic - Optimized with throttling
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY < 10 || mobileMenuOpen) {
-        setVisible(true);
-        setLastScrollY(currentScrollY);
-        return;
-      }
+    let ticking = false;
+    const lastScrollYRef = { value: 0 };
 
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setVisible(false);
-      } else {
-        setVisible(true);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          
+          if (currentScrollY < 10 || mobileMenuOpen) {
+            setVisible(true);
+            lastScrollYRef.value = currentScrollY;
+            ticking = false;
+            return;
+          }
+
+          if (currentScrollY > lastScrollYRef.value && currentScrollY > 100) {
+            setVisible(false);
+          } else {
+            setVisible(true);
+          }
+          lastScrollYRef.value = currentScrollY;
+          ticking = false;
+        });
+        ticking = true;
       }
-      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY, mobileMenuOpen]);
+  }, [mobileMenuOpen]);
 
   // Active Section Observer
   useEffect(() => {
@@ -156,7 +165,7 @@ export default function Navbar() {
                         className={`relative px-4 py-2 text-[11px] xl:text-xs font-mono tracking-[0.15em] uppercase transition-all duration-300
                           ${activeSection === link.href.substring(1) 
                             ? 'text-accent' 
-                            : 'text-gray-400 hover:text-white'
+                            : 'text-gray-300 hover:text-white'
                           }
                         `}
                       >
@@ -184,10 +193,11 @@ export default function Navbar() {
                   <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
                     <button 
                       onClick={toggleReduceMotion}
+                      aria-label={reduceMotion ? "Enable animations" : "Disable animations"}
                       className={`px-3 py-1.5 text-[9px] font-mono tracking-wider uppercase border transition-all duration-300
                         ${reduceMotion 
                           ? 'bg-accent text-black border-accent shadow-[0_0_15px_rgba(0,240,255,0.4)]' 
-                          : 'text-gray-500 border-white/10 hover:border-gray-400 hover:text-white'
+                          : 'text-gray-400 border-white/10 hover:border-gray-300 hover:text-white'
                         }
                       `}
                     >
@@ -198,6 +208,7 @@ export default function Navbar() {
                       <a 
                         href="/cv.pdf" 
                         download
+                        aria-label="Download resume PDF"
                         onMouseEnter={() => setShowTooltip(true)}
                         onMouseLeave={() => setShowTooltip(false)}
                         className="flex items-center gap-2 px-4 py-1.5 text-[10px] font-mono tracking-wider uppercase border border-accent/40 text-accent hover:bg-accent hover:text-black transition-all duration-300 group"
@@ -324,7 +335,7 @@ export default function Navbar() {
                     className={`relative px-6 py-4 text-lg font-mono tracking-widest uppercase border border-transparent hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 rounded-lg group
                       ${activeSection === link.href.substring(1) 
                         ? 'text-accent border-accent/40 bg-accent/10' 
-                        : 'text-gray-400 hover:text-white'
+                        : 'text-gray-300 hover:text-white'
                       }
                     `}
                   >
@@ -346,6 +357,7 @@ export default function Navbar() {
                 <motion.a 
                   href="/cv.pdf" 
                   download
+                  aria-label="Download resume PDF"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
@@ -360,14 +372,15 @@ export default function Navbar() {
                 </motion.a>
 
                 <motion.button 
-                  onClick={toggleReduceMotion} 
+                  onClick={toggleReduceMotion}
+                  aria-label={reduceMotion ? "Enable animations" : "Disable animations"}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
                   className={`w-full px-6 py-4 text-sm font-mono tracking-wider uppercase border-2 transition-all duration-300
                     ${reduceMotion 
                       ? 'bg-accent text-black border-accent shadow-[0_0_20px_rgba(0,240,255,0.4)]' 
-                      : 'text-gray-500 border-white/10 hover:border-gray-400 hover:text-white'
+                      : 'text-gray-400 border-white/10 hover:border-gray-300 hover:text-white'
                     }
                   `}
                 >

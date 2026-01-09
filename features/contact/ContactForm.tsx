@@ -17,9 +17,10 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
+      aria-label={pending ? "Processing message" : "Send message"}
       className={`
         w-full py-4 font-mono font-bold tracking-widest uppercase transition-all duration-300 relative overflow-hidden group border border-white/20
-        ${pending ? "bg-black text-gray-500 cursor-wait" : "bg-white text-black hover:bg-accent hover:text-black"}
+        ${pending ? "bg-black text-gray-400 cursor-wait" : "bg-white text-black hover:bg-accent hover:text-black"}
       `}
     >
       {pending ? (
@@ -28,7 +29,7 @@ function SubmitButton() {
         </span>
       ) : (
         <>
-            <span className="relative z-10">INITIATE CONNECTION</span>
+            <span className="relative z-10">SEND MESSAGE</span>
             <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300 -z-0" />
         </>
       )}
@@ -49,11 +50,11 @@ export default function ContactForm() {
 
   useEffect(() => {
     if (state.success) {
-      setLogs(["Transmitting packet...", "Handshake successful.", "Encrypted.", "Payload delivered."]);
+      setLogs(["Message sent successfully."]);
       formRef.current?.reset();
       showToast("Message sent successfully", "success");
     } else if (state.message) {
-        setLogs([`Error: ${state.message}`, "Transmission aborted."]);
+        setLogs([`Error: ${state.message}`]);
         showToast(state.message || "Failed to send message", "error");
     }
   }, [state, showToast]);
@@ -77,13 +78,15 @@ export default function ContactForm() {
             <div className="relative group">
                 <input
                     type="text"
+                    id="name"
                     name="name"
                     required
                     placeholder=" "
                     className="w-full bg-black/50 border border-white/10 p-4 text-white placeholder-transparent focus:outline-none focus:border-transparent peer backdrop-blur-md"
+                    aria-label="Name"
                 />
-                <label className="absolute left-4 top-4 text-gray-500 text-xs font-mono uppercase transition-all peer-focus:-top-6 peer-focus:left-0 peer-focus:text-accent peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:left-0 peer-not-placeholder-shown:text-accent pointer-events-none">
-                    Identifier (Name)
+                <label htmlFor="name" className="absolute left-4 top-4 text-gray-300 text-xs font-mono uppercase transition-all peer-focus:-top-6 peer-focus:left-0 peer-focus:text-accent peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:left-0 peer-not-placeholder-shown:text-accent pointer-events-none">
+                    Name
                 </label>
                 {/* Glowing Border Gradient */}
                 <div className="absolute inset-0 -z-10 rounded-sm p-[1px] opacity-0 peer-focus:opacity-100 transition-opacity">
@@ -96,13 +99,15 @@ export default function ContactForm() {
             <div className="relative group">
                 <input
                     type="email"
+                    id="email"
                     name="email"
                     required
                     placeholder=" "
                     className="w-full bg-black/50 border border-white/10 p-4 text-white placeholder-transparent focus:outline-none focus:border-transparent peer backdrop-blur-md"
+                    aria-label="Email"
                 />
-                <label className="absolute left-4 top-4 text-gray-500 text-xs font-mono uppercase transition-all peer-focus:-top-6 peer-focus:left-0 peer-focus:text-accent peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:left-0 peer-not-placeholder-shown:text-accent pointer-events-none">
-                    Network Protocol (Email)
+                <label htmlFor="email" className="absolute left-4 top-4 text-gray-300 text-xs font-mono uppercase transition-all peer-focus:-top-6 peer-focus:left-0 peer-focus:text-accent peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:left-0 peer-not-placeholder-shown:text-accent pointer-events-none">
+                    Email
                 </label>
                  <div className="absolute inset-0 -z-10 rounded-sm p-[1px] opacity-0 peer-focus:opacity-100 transition-opacity">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50 blur-sm" />
@@ -113,14 +118,16 @@ export default function ContactForm() {
             {/* Message Input */}
             <div className="relative group">
                 <textarea
+                    id="message"
                     name="message"
                     rows={5}
                     required
                     placeholder=" "
                     className="w-full bg-black/50 border border-white/10 p-4 text-white placeholder-transparent focus:outline-none focus:border-transparent peer resize-none backdrop-blur-md"
+                    aria-label="Message"
                 />
-                <label className="absolute left-4 top-4 text-gray-500 text-xs font-mono uppercase transition-all peer-focus:-top-6 peer-focus:left-0 peer-focus:text-accent peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:left-0 peer-not-placeholder-shown:text-accent pointer-events-none">
-                    Payload Data (Message)
+                <label htmlFor="message" className="absolute left-4 top-4 text-gray-300 text-xs font-mono uppercase transition-all peer-focus:-top-6 peer-focus:left-0 peer-focus:text-accent peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:left-0 peer-not-placeholder-shown:text-accent pointer-events-none">
+                    Message
                 </label>
                  <div className="absolute inset-0 -z-10 rounded-sm p-[1px] opacity-0 peer-focus:opacity-100 transition-opacity">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50 blur-sm" />

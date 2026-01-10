@@ -21,29 +21,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Architect | Senior Creative Developer",
+  title: "Software Engineer | Creative Developer",
   description: "Portfolio for Web Solutions. Specializing in ERP, POS, and E-commerce development.",
   keywords: ["Software Engineer", "Creative Developer", "Next.js", "Three.js", "Indonesia", "Singapore", "Japan"],
   metadataBase: new URL('https://abdulazizz.com'),
   openGraph: {
-    title: "Digital Architect | Senior Creative Developer",
+    title: "Software Engineer | Creative Developer",
     description: "Portfolio for Web Solutions. Specializing in ERP, POS, and E-commerce development.",
     type: "profile",
     locale: "en_US",
     url: "https://abdulazizz.com",
-    siteName: "Digital Architect Portfolio",
+    siteName: "Software Engineer Portfolio",
     images: [
         {
             url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&h=630", // Placeholder OG
             width: 1200,
             height: 630,
-            alt: "Digital Architect Portfolio",
+            alt: "Software Engineer Portfolio",
         }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital Architect | Senior Creative Developer",
+    title: "Software Engineer | Creative Developer",
     description: "Portfolio for Web Solutions. Specializing in ERP, POS, and E-commerce development.",
     creator: "@itsabdulaziz",
     images: ["https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&h=630"],
@@ -72,19 +72,19 @@ export default function RootLayout({
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Digital Architect",
+    "name": "Software Engineer",
     "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b", // Branding Image
     "url": "https://abdulazizz.com",
-    "jobTitle": "Senior Creative Developer",
-    "description": "Specializing in High-Performance WebGL, ERP Systems, and E-commerce Solutions.",
+    "jobTitle": "Software Engineer & Creative Developer",
+    "description": "Specializing in Web Development, ERP Systems, and E-commerce Solutions.",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "ID",
       "addressRegion": "Jakarta"
     },
     "areaServed": ["Indonesia", "Singapore", "Japan", "Vietnam", "Malaysia"],
-    "priceRange": "$$$",
-    "knowsAbout": ["Next.js", "React Three Fiber", "System Architecture", "Cloud Infrastructure"],
+    "priceRange": "$$",
+    "knowsAbout": ["Next.js", "React", "Three.js", "Web Development", "ERP Systems"],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Software Development Services",

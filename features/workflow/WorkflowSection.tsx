@@ -10,25 +10,25 @@ const steps = [
   {
     id: "01",
     title: "DISCOVERY & STRATEGY",
-    description: "Deep-dive analysis of business requirements, market constraints, and technical feasibility.",
+    description: "Understanding business requirements, identifying constraints, and evaluating technical feasibility.",
     icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
   },
   {
     id: "02",
     title: "ARCHITECTURE DESIGN",
-    description: "Blueprint creation. Selecting the optimal tech stack (Next.js, AWS, K8s) for scalability.",
+    description: "Planning system structure and selecting appropriate technologies (Next.js, React, Node.js) based on project needs.",
     icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z",
   },
   {
     id: "03",
     title: "DEVELOPMENT",
-    description: "Agile development sprints with a focus on performance optimization and clean code.",
+    description: "Building features using agile methodologies, focusing on code quality and performance.",
     icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
   },
   {
     id: "04",
-    title: "GLOBAL DEPLOYMENT",
-    description: "CI/CD pipelines, edge caching strategy, and automated testing for a flawless launch.",
+    title: "DEPLOYMENT",
+    description: "Setting up deployment pipelines, testing thoroughly, and launching the application.",
     icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
   },
 ];
@@ -103,10 +103,10 @@ export default function WorkflowSection() {
       <div className="container mx-auto px-4 md:px-10 relative z-10">
         <div className="mb-20 text-center">
              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
-                ENGINEERING <span className="text-accent text-glow">PROTOCOL</span>
+                DEVELOPMENT <span className="text-accent text-glow">PROCESS</span>
             </h2>
             <p className="font-mono text-accent text-sm tracking-[0.3em] uppercase">
-                System Workflow v2.0
+                My Workflow
             </p>
         </div>
 

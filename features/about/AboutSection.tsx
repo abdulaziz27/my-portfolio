@@ -40,18 +40,18 @@ export default function AboutSection() {
                 <p className="text-accent font-mono text-sm tracking-[0.3em] uppercase mb-4">The Architect</p>
                 <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tighter leading-tight">
                     BRIDGING BUSINESS <br/> 
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-600">WITH ENGINEERING.</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 to-gray-400">WITH ENGINEERING.</span>
                 </h2>
             </div>
 
             <div className="space-y-4 text-gray-300 font-light text-lg leading-relaxed">
                 <p>
                     <span className="text-white font-medium">Bachelor of Computer Science</span> with a focus on scalable systems and high-performance UI. 
-                    I don&apos;t just write code; I architect solutions that solve real-world SME constraints across Southeast Asia and Japan.
+                    I build solutions that address real-world business needs for SMEs across Southeast Asia and Japan.
                 </p>
                 <p>
-                    From <span className="text-accent font-mono text-base">ERP SYSTEM ARCHITECTURE</span> to <span className="text-accent font-mono text-base">HIGH-END E-COMMERCE</span>, 
-                    my mission is to deliver elite-tier digital products that compete on a global scale.
+                    From <span className="text-accent font-mono text-base">ERP SYSTEMS</span> to <span className="text-accent font-mono text-base">E-COMMERCE PLATFORMS</span>, 
+                    I focus on delivering quality digital products that help businesses grow and operate more efficiently.
                 </p>
             </div>
 
@@ -61,15 +61,15 @@ export default function AboutSection() {
                     <span className="text-white">B.Comp.Sc (Computer Science)</span>
                 </div>
                 <div>
-                    <span className="text-gray-400 block mb-2">Specialization</span>
+                    <span className="text-gray-300 block mb-2">Specialization</span>
                     <span className="text-white">Full-stack & Interactive Design</span>
                 </div>
                 <div>
-                    <span className="text-gray-400 block mb-2">Global Experience</span>
+                    <span className="text-gray-300 block mb-2">Global Experience</span>
                     <span className="text-white">ID / VN / JP / MY / SG</span>
                 </div>
                 <div>
-                    <span className="text-gray-400 block mb-2">Frameworks</span>
+                    <span className="text-gray-300 block mb-2">Frameworks</span>
                     <span className="text-white">React 19 / Next 16 / Three.js</span>
                 </div>
             </div>

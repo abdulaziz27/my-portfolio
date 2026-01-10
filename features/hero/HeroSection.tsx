@@ -26,15 +26,15 @@ export default function HeroSection() {
 
         {/* Sub-headline */}
         <p className="max-w-2xl mx-auto text-gray-300 text-lg md:text-xl font-light leading-relaxed">
-          Crafting <span className="text-white font-medium">Elite-Tier</span> digital solutions for the global market. 
-          Specialized in ERP, High-Performance Commerce, and Interactive WebGL Experiences.
+          Building <span className="text-white font-medium">quality</span> digital solutions for businesses. 
+          Specialized in ERP systems, E-commerce platforms, and interactive web experiences.
         </p>
       </div>
 
       {/* 3. Decorative Elements */}
       <div className="absolute bottom-10 left-10 hidden md:block">
          <div className="h-[1px] w-24 bg-accent opacity-50 mb-2"></div>
-         <p className="text-xs text-gray-400 font-mono">ID / SG / JP / MY / VN</p>
+         <p className="text-xs text-gray-300 font-mono">ID / SG / JP / MY / VN</p>
       </div>
       
       <div className="absolute bottom-10 right-10 animate-bounce">
@@ -45,7 +45,7 @@ export default function HeroSection() {
             fill="none" 
             stroke="currentColor" 
             strokeWidth="2"
-            className="text-gray-400"
+            className="text-gray-300"
         >
             <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
         </svg>

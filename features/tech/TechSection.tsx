@@ -17,10 +17,10 @@ export default function TechSection() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-16">
             <div>
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tighter">
-                    COMMAND <span className="text-accent text-glow">CENTER</span>
+                    TECH <span className="text-accent text-glow">STACK</span>
                 </h2>
                 <p className="text-gray-300 font-mono text-sm tracking-widest uppercase">
-                    Tech Stack & Mastery Distribution
+                    Technologies & Skills
                 </p>
             </div>
             
@@ -49,11 +49,11 @@ export default function TechSection() {
                 {/* Terminal / Logs Placeholder */}
                 <div className="mt-8 p-4 bg-black border border-white/10 font-mono text-xs text-green-500 opacity-70 h-32 overflow-hidden relative">
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black pointer-events-none" />
-                    <p>{`> Initializing core systems...`}</p>
+                    <p>{`> Initializing systems...`}</p>
                     <p>{`> Loading React 19 modules... [OK]`}</p>
-                    <p>{`> Connecting to Global CDN... [OK]`}</p>
-                    <p>{`> Optimizing WebGL shaders... [OK]`}</p>
-                    <p className="animate-pulse">{`> Awaiting user input_`}</p>
+                    <p>{`> Setting up deployment... [OK]`}</p>
+                    <p>{`> Building optimized bundle... [OK]`}</p>
+                    <p className="animate-pulse">{`> Ready for deployment_`}</p>
                 </div>
             </div>
         </div>

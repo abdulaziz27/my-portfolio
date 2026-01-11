@@ -108,7 +108,7 @@ const MeshPlane = () => {
 
   return (
     <mesh ref={mesh} scale={[20, 10, 1]}>
-      <planeGeometry args={[1, 1, 32, 32]} />
+      <planeGeometry args={[1, 1, 16, 16]} /> {/* Reduced from 32x32 to 16x16 for better performance */}
       <shaderMaterial args={[shaderArgs]} />
     </mesh>
   );
@@ -117,7 +117,11 @@ const MeshPlane = () => {
 export default function MeshGradientBackground() {
   return (
     <div className="absolute inset-0 -z-10 w-full h-full bg-[#050505]">
-      <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 2]}>
+      <Canvas 
+        camera={{ position: [0, 0, 1] }} 
+        dpr={[1, 1.5]} // Reduced from [1, 2] for better performance
+        gl={{ antialias: false }} // Disable expensive antialiasing
+      >
         <MeshPlane />
       </Canvas>
     </div>

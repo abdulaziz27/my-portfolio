@@ -10,14 +10,15 @@ interface TechItem {
 }
 
 const techStack: TechItem[] = [
-  { name: "Next.js 16 (Canary)", level: 98, status: "ONLINE" },
-  { name: "React 19 (RC)", level: 95, status: "ONLINE" },
-  { name: "TypeScript (Strict)", level: 99, status: "ONLINE" },
-  { name: "Three.js / R3F", level: 88, status: "LOADING" },
-  { name: "Go / Golang", level: 85, status: "STANDBY" },
-  { name: "PostgreSQL", level: 92, status: "ONLINE" },
-  { name: "Docker / K8s", level: 80, status: "STANDBY" },
-  { name: "AWS Serverless", level: 85, status: "ONLINE" },
+  { name: "Next.js 16", level: 95, status: "ONLINE" },
+  { name: "React 19", level: 95, status: "ONLINE" },
+  { name: "TypeScript", level: 90, status: "ONLINE" },
+  { name: "Node.js", level: 88, status: "ONLINE" },
+  { name: "Tailwind CSS", level: 92, status: "ONLINE" },
+  { name: "Three.js / R3F", level: 75, status: "LOADING" },
+  { name: "PostgreSQL", level: 85, status: "ONLINE" },
+  { name: "Docker", level: 75, status: "ONLINE" },
+  { name: "Vercel / Cloudflare", level: 90, status: "ONLINE" },
 ];
 
 export default function TechStatusBar() {

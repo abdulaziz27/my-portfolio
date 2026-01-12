@@ -1,22 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import Link from "next/link";
-
-const navLinks = [
-  { name: "WORK", href: "#work" },
-  { name: "PROCESS", href: "#process" },
-  { name: "STATUS", href: "#status" },
-  { name: "CONTACT", href: "#contact" },
-];
+import { useTranslations, useLocale } from "@/context/LocaleContext";
 
 export default function Navbar() {
+  const tNav = useTranslations("nav");
+  const { locale, setLocale } = useLocale();
   const [visible, setVisible] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [reduceMotion, setReduceMotion] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+
+  const navLinks = useMemo(
+    () => [
+      { name: tNav("work"), href: "#work", id: "work" },
+      { name: tNav("process"), href: "#process", id: "process" },
+      { name: tNav("status"), href: "#status", id: "status" },
+      { name: tNav("contact"), href: "#contact", id: "contact" },
+    ],
+    [tNav]
+  );
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -97,6 +103,10 @@ export default function Navbar() {
     document.body.classList.toggle("reduce-motion");
   };
 
+  const toggleLocale = () => {
+    setLocale(locale === "en" ? "id" : "en");
+  };
+
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
@@ -159,18 +169,18 @@ export default function Navbar() {
                   <nav className="hidden lg:flex items-center gap-1 xl:gap-2 flex-1 justify-center">
                     {navLinks.map((link) => (
                       <a 
-                        key={link.name} 
+                        key={link.id} 
                         href={link.href}
                         onClick={(e) => handleSmoothScroll(e, link.href)}
                         className={`relative px-4 py-2 text-[11px] xl:text-xs font-mono tracking-[0.15em] uppercase transition-all duration-300
-                          ${activeSection === link.href.substring(1) 
+                          ${activeSection === link.id 
                             ? 'text-accent' 
                             : 'text-gray-300 hover:text-white'
                           }
                         `}
                       >
                         {link.name}
-                        {activeSection === link.href.substring(1) && (
+                        {activeSection === link.id && (
                           <>
                             <motion.div 
                               layoutId="active-indicator"
@@ -191,9 +201,44 @@ export default function Navbar() {
 
                   {/* Desktop Actions - Only visible on lg+ */}
                   <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+                    {/* Locale toggle - segmented pill */}
+                    <div
+                      className="relative flex items-center rounded-full border border-white/15 bg-black/40 overflow-hidden"
+                      aria-label="Language selector"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setLocale("en")}
+                        className={`relative px-3 py-1 text-[9px] font-mono uppercase tracking-wider transition-colors duration-200 ${
+                          locale === "en"
+                            ? "text-black"
+                            : "text-gray-400 hover:text-white"
+                        }`}
+                      >
+                        EN
+                        {locale === "en" && (
+                          <span className="absolute inset-0 -z-10 bg-accent" />
+                        )}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLocale("id")}
+                        className={`relative px-3 py-1 text-[9px] font-mono uppercase tracking-wider transition-colors duration-200 border-l border-white/10 ${
+                          locale === "id"
+                            ? "text-black"
+                            : "text-gray-400 hover:text-white"
+                        }`}
+                      >
+                        ID
+                        {locale === "id" && (
+                          <span className="absolute inset-0 -z-10 bg-accent" />
+                        )}
+                      </button>
+                    </div>
+
                     <button 
                       onClick={toggleReduceMotion}
-                      aria-label={reduceMotion ? "Enable animations" : "Disable animations"}
+                    aria-label={reduceMotion ? "Enable animations" : "Disable animations"}
                       className={`px-3 py-1.5 text-[9px] font-mono tracking-wider uppercase border transition-all duration-300
                         ${reduceMotion 
                           ? 'bg-accent text-black border-accent shadow-[0_0_15px_rgba(0,240,255,0.4)]' 
@@ -208,12 +253,12 @@ export default function Navbar() {
                       <a 
                         href="/cv.pdf" 
                         download
-                        aria-label="Download resume PDF"
+                        aria-label={tNav("downloadCv")}
                         onMouseEnter={() => setShowTooltip(true)}
                         onMouseLeave={() => setShowTooltip(false)}
                         className="flex items-center gap-2 px-4 py-1.5 text-[10px] font-mono tracking-wider uppercase border border-accent/40 text-accent hover:bg-accent hover:text-black transition-all duration-300 group"
                       >
-                        <span>EXPORT</span>
+                        <span>{tNav("export")}</span>
                         <svg 
                           width="12" 
                           height="12" 
@@ -250,7 +295,7 @@ export default function Navbar() {
                   <button 
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     className="lg:hidden flex flex-col justify-center items-center gap-1.5 w-12 h-12 min-w-[48px] border-2 border-accent/40 rounded-lg bg-accent/5 hover:bg-accent/10 active:bg-accent/15 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 z-50 flex-shrink-0 group"
-                    aria-label="Toggle Menu"
+                    aria-label={tNav("toggleMenu")}
                     aria-expanded={mobileMenuOpen}
                   >
                     <motion.div 
@@ -309,11 +354,11 @@ export default function Navbar() {
             >
               {/* Menu Header */}
               <div className="flex items-center justify-between p-6 border-b border-white/10">
-                <span className="text-accent font-mono text-xs tracking-widest uppercase">NAVIGATION</span>
+                <span className="text-accent font-mono text-xs tracking-widest uppercase">{tNav("navLabel")}</span>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="w-10 h-10 flex items-center justify-center border border-white/20 rounded-lg hover:bg-accent/10 hover:border-accent/40 transition-all duration-300"
-                  aria-label="Close Menu"
+                  aria-label={tNav("closeMenu")}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
                     <line x1="18" y1="6" x2="6" y2="18" />
@@ -326,21 +371,21 @@ export default function Navbar() {
               <nav className="flex flex-col p-6 gap-2">
                 {navLinks.map((link, i) => (
                   <motion.a 
-                    key={link.name} 
+                    key={link.id} 
                     href={link.href}
                     onClick={(e) => handleSmoothScroll(e, link.href)}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.1 + 0.1, type: "spring", stiffness: 200 }}
                     className={`relative px-6 py-4 text-lg font-mono tracking-widest uppercase border border-transparent hover:border-accent/30 hover:bg-accent/5 transition-all duration-300 rounded-lg group
-                      ${activeSection === link.href.substring(1) 
+                      ${activeSection === link.id 
                         ? 'text-accent border-accent/40 bg-accent/10' 
                         : 'text-gray-300 hover:text-white'
                       }
                     `}
                   >
                     {link.name}
-                    {activeSection === link.href.substring(1) && (
+                    {activeSection === link.id && (
                       <motion.div 
                         layoutId="mobile-active"
                         className="absolute left-0 top-0 bottom-0 w-1 bg-accent shadow-[0_0_10px_var(--accent)]"
@@ -357,13 +402,13 @@ export default function Navbar() {
                 <motion.a 
                   href="/cv.pdf" 
                   download
-                  aria-label="Download resume PDF"
+                  aria-label={tNav("downloadCv")}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                   className="flex items-center justify-center gap-3 px-6 py-4 text-sm font-mono tracking-wider uppercase border-2 border-accent/40 text-accent hover:bg-accent hover:text-black transition-all duration-300 group"
                 >
-                  <span>SYSTEM_EXPORT</span>
+                  <span>{tNav("systemExport")}</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="group-hover:translate-y-0.5 transition-transform duration-300">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                     <polyline points="7 10 12 15 17 10" />
@@ -386,6 +431,46 @@ export default function Navbar() {
                 >
                   {reduceMotion ? 'MOTION: OFF' : 'MOTION: ON'}
                 </motion.button>
+
+                {/* Mobile language toggle - pill */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.65, type: "spring", stiffness: 200 }}
+                  className="w-full flex items-center justify-center"
+                  aria-label="Language selector"
+                >
+                  <div className="inline-flex items-center rounded-full border-2 border-white/10 bg-black/40 overflow-hidden">
+                    <button
+                      type="button"
+                      onClick={() => setLocale("en")}
+                      className={`relative px-5 py-3 text-xs font-mono uppercase tracking-wider transition-colors duration-200 ${
+                        locale === "en"
+                          ? "text-black"
+                          : "text-gray-300 hover:text-white"
+                      }`}
+                    >
+                      EN
+                      {locale === "en" && (
+                        <span className="absolute inset-0 -z-10 bg-accent" />
+                      )}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setLocale("id")}
+                      className={`relative px-5 py-3 text-xs font-mono uppercase tracking-wider border-l border-white/10 transition-colors duration-200 ${
+                        locale === "id"
+                          ? "text-black"
+                          : "text-gray-300 hover:text-white"
+                      }`}
+                    >
+                      ID
+                      {locale === "id" && (
+                        <span className="absolute inset-0 -z-10 bg-accent" />
+                      )}
+                    </button>
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </>

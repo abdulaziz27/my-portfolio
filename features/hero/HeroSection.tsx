@@ -1,7 +1,12 @@
+"use client";
+
 import MeshGradientBackground from "@/components/backgrounds/MeshGradientBackground";
 import KineticText from "./KineticText";
+import { useTranslations } from "@/context/LocaleContext";
 
 export default function HeroSection() {
+  const tHero = useTranslations("hero");
+
   return (
     <section id="hero" className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
       {/* 1. Interactive 3D Background */}
@@ -11,7 +16,7 @@ export default function HeroSection() {
       <div className="z-10 text-center px-4 mix-blend-difference">
         {/* Intro Tag */}
         <p className="text-sm md:text-base text-accent uppercase tracking-[0.3em] mb-4 opacity-80">
-          Software Engineer &bull; Creative Developer
+          {tHero("intro")}
         </p>
 
         {/* Main Kinetic Title */}
@@ -26,17 +31,11 @@ export default function HeroSection() {
 
         {/* Sub-headline */}
         <p className="max-w-2xl mx-auto text-gray-300 text-lg md:text-xl font-light leading-relaxed">
-          Building <span className="text-white font-medium">quality</span> digital solutions for businesses. 
-          Specialized in ERP systems, E-commerce platforms, and interactive web experiences.
+          {tHero("sub")}
         </p>
       </div>
 
       {/* 3. Decorative Elements */}
-      <div className="absolute bottom-10 left-10 hidden md:block">
-         <div className="h-[1px] w-24 bg-accent opacity-50 mb-2"></div>
-         <p className="text-xs text-gray-300 font-mono">ID / SG / JP / MY / VN</p>
-      </div>
-      
       <div className="absolute bottom-10 right-10 animate-bounce">
         <svg 
             width="24" 

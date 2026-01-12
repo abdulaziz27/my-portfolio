@@ -3,8 +3,10 @@
 import { useState } from "react";
 import ContactForm from "./ContactForm";
 import WorldClock from "./WorldClock";
+import { useTranslations } from "@/context/LocaleContext";
 
 export default function ContactSection() {
+  const tContact = useTranslations("contact");
   const [copied, setCopied] = useState(false);
   const email = "abdulazizz.dev@gmail.com";
 
@@ -42,16 +44,16 @@ export default function ContactSection() {
             <div className="flex flex-col space-y-12">
                 <div>
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tighter">
-                        GET IN <span className="text-accent text-glow">TOUCH</span>
+                        {tContact("heading").split(" ")[0]} <span className="text-accent text-glow">{tContact("heading").split(" ").slice(1).join(" ")}</span>
                     </h2>
                     <p className="text-gray-300 font-light leading-relaxed max-w-md">
-                        Have a project in mind? Let's discuss how we can work together to bring your ideas to life.
+                        {tContact("intro")}
                     </p>
                 </div>
 
                 {/* Comm Channels */}
                 <div className="space-y-4">
-                    <h3 className="text-xs font-mono text-gray-300 uppercase tracking-widest">Contact</h3>
+                    <h3 className="text-xs font-mono text-gray-300 uppercase tracking-widest">{tContact("contactLabel")}</h3>
                     <div className="flex flex-col gap-2">
                         <div className="group flex items-center gap-4 p-4 border border-white/10 hover:border-accent hover:bg-white/5 transition-all">
                             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -66,19 +68,23 @@ export default function ContactSection() {
                                 className="ml-auto px-3 py-1.5 text-[10px] font-mono uppercase border border-white/20 hover:border-accent hover:bg-accent/10 transition-all text-gray-300 hover:text-accent"
                                 title="Copy email"
                             >
-                                {copied ? "COPIED" : "COPY"}
+                                {copied ? tContact("copied") : tContact("copy")}
                             </button>
                         </div>
                         <a href="https://www.linkedin.com/in/itsabdulaziz" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 border border-white/10 hover:border-accent hover:bg-white/5 transition-all">
                             <span className="w-2 h-2 bg-blue-500 rounded-full" />
                             <span className="font-mono text-sm text-gray-300 group-hover:text-white">LinkedIn</span>
                         </a>
+                        <a href="https://github.com/abdulaziz27" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 p-4 border border-white/10 hover:border-accent hover:bg-white/5 transition-all">
+                            <span className="w-2 h-2 bg-gray-400 rounded-full" />
+                            <span className="font-mono text-sm text-gray-300 group-hover:text-white">GitHub</span>
+                        </a>
                     </div>
                 </div>
 
                 {/* World Clock Widget */}
                 <div>
-                    <h3 className="text-xs font-mono text-gray-300 uppercase tracking-widest mb-4">Time Zones</h3>
+                    <h3 className="text-xs font-mono text-gray-300 uppercase tracking-widest mb-4">{tContact("timezones")}</h3>
                     <WorldClock />
                 </div>
             </div>

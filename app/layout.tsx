@@ -9,6 +9,7 @@ import ToastProvider from "@/components/ui/ToastProvider";
 import { projects } from "@/features/work/projectData";
 import { TransitionProvider } from "@/context/TransitionContext";
 import PageTransitionOverlay from "@/components/ui/PageTransitionOverlay";
+import { LocaleProvider } from "@/context/LocaleContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -118,13 +119,15 @@ export default function RootLayout({
         
         <ErrorBoundary>
           <ToastProvider>
-            <TransitionProvider>
-              <PageTransitionOverlay />
-              <Navbar />
-              <MagneticCursor />
-              <div className="bg-grain" />
-              {children}
-            </TransitionProvider>
+            <LocaleProvider>
+              <TransitionProvider>
+                <PageTransitionOverlay />
+                <Navbar />
+                <MagneticCursor />
+                <div className="bg-grain" />
+                {children}
+              </TransitionProvider>
+            </LocaleProvider>
           </ToastProvider>
         </ErrorBoundary>
       </body>

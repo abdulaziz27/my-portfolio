@@ -1,7 +1,11 @@
-import TechRadar from "./TechRadar";
-import TechStatusBar from "./TechStatusBar";
+"use client";
+
+import TechLogoGrid from "./TechLogoGrid";
+import { useTranslations } from "@/context/LocaleContext";
 
 export default function TechSection() {
+  const tTech = useTranslations("tech");
+
   return (
     <section id="status" className="relative w-full py-24 bg-black border-t border-white/10 overflow-hidden">
       {/* HUD Background Grid */}
@@ -17,10 +21,10 @@ export default function TechSection() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-16">
             <div>
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tighter">
-                    TECH <span className="text-accent text-glow">STACK</span>
+                    {tTech("heading").split(" ")[0]} <span className="text-accent text-glow">{tTech("heading").split(" ").slice(1).join(" ")}</span>
                 </h2>
                 <p className="text-gray-300 font-mono text-sm tracking-widest uppercase">
-                    Technologies & Skills
+                    {tTech("subheading")}
                 </p>
             </div>
             
@@ -32,30 +36,19 @@ export default function TechSection() {
             </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left: Radar Chart (4 Cols) */}
-            <div className="lg:col-span-5 flex flex-col items-center">
-                <div className="bg-white/5 border border-white/10 p-4 rounded-full backdrop-blur-sm relative">
-                    {/* Rotating Ring */}
-                    <div className="absolute inset-[-10px] border border-accent/20 rounded-full border-dashed animate-spin-slow pointer-events-none" />
-                    <TechRadar />
-                </div>
-            </div>
+        {/* Logo Grid */}
+        <div className="bg-white/5 border border-white/10 p-8 md:p-12 backdrop-blur-sm">
+            <TechLogoGrid />
+        </div>
 
-            {/* Right: Status Bars (8 Cols) */}
-            <div className="lg:col-span-7">
-                <TechStatusBar />
-                
-                {/* Terminal / Logs Placeholder */}
-                <div className="mt-8 p-4 bg-black border border-white/10 font-mono text-xs text-green-500 opacity-70 h-32 overflow-hidden relative">
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black pointer-events-none" />
-                    <p>{`> Initializing systems...`}</p>
-                    <p>{`> Loading React 19 modules... [OK]`}</p>
-                    <p>{`> Setting up deployment... [OK]`}</p>
-                    <p>{`> Building optimized bundle... [OK]`}</p>
-                    <p className="animate-pulse">{`> Ready for deployment_`}</p>
-                </div>
-            </div>
+        {/* Terminal / Logs Placeholder */}
+        <div className="mt-8 p-4 bg-black border border-white/10 font-mono text-xs text-green-500 opacity-70 h-32 overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black pointer-events-none" />
+            <p>{tTech("terminal1")}</p>
+            <p>{tTech("terminal2")}</p>
+            <p>{tTech("terminal3")}</p>
+            <p>{tTech("terminal4")}</p>
+            <p className="animate-pulse">{tTech("terminal5")}</p>
         </div>
       </div>
     </section>

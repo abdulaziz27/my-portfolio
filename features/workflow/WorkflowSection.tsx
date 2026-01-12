@@ -3,40 +3,42 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslations } from "@/context/LocaleContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const steps = [
-  {
-    id: "01",
-    title: "DISCOVERY & STRATEGY",
-    description: "Understanding business requirements, identifying constraints, and evaluating technical feasibility.",
-    icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
-  },
-  {
-    id: "02",
-    title: "ARCHITECTURE DESIGN",
-    description: "Planning system structure and selecting appropriate technologies (Next.js, React, Node.js) based on project needs.",
-    icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z",
-  },
-  {
-    id: "03",
-    title: "DEVELOPMENT",
-    description: "Building features using agile methodologies, focusing on code quality and performance.",
-    icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
-  },
-  {
-    id: "04",
-    title: "DEPLOYMENT",
-    description: "Setting up deployment pipelines, testing thoroughly, and launching the application.",
-    icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-  },
-];
-
 export default function WorkflowSection() {
+  const tWorkflow = useTranslations("workflow");
   const sectionRef = useRef<HTMLElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
+
+  const steps = [
+    {
+      id: "01",
+      title: tWorkflow("step1Title"),
+      description: tWorkflow("step1Desc"),
+      icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+    },
+    {
+      id: "02",
+      title: tWorkflow("step2Title"),
+      description: tWorkflow("step2Desc"),
+      icon: "M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z",
+    },
+    {
+      id: "03",
+      title: tWorkflow("step3Title"),
+      description: tWorkflow("step3Desc"),
+      icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+    },
+    {
+      id: "04",
+      title: tWorkflow("step4Title"),
+      description: tWorkflow("step4Desc"),
+      icon: "M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    },
+  ];
 
   useEffect(() => {
     if (!sectionRef.current || !pathRef.current) return;
@@ -103,10 +105,10 @@ export default function WorkflowSection() {
       <div className="container mx-auto px-4 md:px-10 relative z-10">
         <div className="mb-20 text-center">
              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4">
-                DEVELOPMENT <span className="text-accent text-glow">PROCESS</span>
+                {tWorkflow("headingPrimary")} <span className="text-accent text-glow">{tWorkflow("headingAccent")}</span>
             </h2>
             <p className="font-mono text-accent text-sm tracking-[0.3em] uppercase">
-                My Workflow
+                {tWorkflow("subheading")}
             </p>
         </div>
 

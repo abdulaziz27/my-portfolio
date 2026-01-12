@@ -4,6 +4,7 @@ import { useActionState, useEffect, useRef, useState } from "react";
 import { sendContactForm, ContactState } from "@/actions/sendEmail";
 import { useFormStatus } from "react-dom";
 import { useToast } from "@/components/ui/ToastProvider";
+import { useTranslations } from "@/context/LocaleContext";
 
 const initialState: ContactState = {
   success: false,
@@ -11,13 +12,14 @@ const initialState: ContactState = {
 };
 
 function SubmitButton() {
+  const tForm = useTranslations("form");
   const { pending } = useFormStatus();
 
   return (
     <button
       type="submit"
       disabled={pending}
-      aria-label={pending ? "Processing message" : "Send message"}
+      aria-label={pending ? tForm("processing") : tForm("send")}
       className={`
         w-full py-4 font-mono font-bold tracking-widest uppercase transition-all duration-300 relative overflow-hidden group border border-white/20
         ${pending ? "bg-black text-gray-400 cursor-wait" : "bg-white text-black hover:bg-accent hover:text-black"}
@@ -25,11 +27,11 @@ function SubmitButton() {
     >
       {pending ? (
         <span className="flex items-center justify-center gap-2">
-           <span className="w-2 h-2 bg-accent animate-ping" /> PROCESSING...
+           <span className="w-2 h-2 bg-accent animate-ping" /> {tForm("processing")}
         </span>
       ) : (
         <>
-            <span className="relative z-10">SEND MESSAGE</span>
+            <span className="relative z-10">{tForm("send")}</span>
             <div className="absolute inset-0 bg-accent translate-y-full group-hover:translate-y-0 transition-transform duration-300 -z-0" />
         </>
       )}
@@ -38,6 +40,8 @@ function SubmitButton() {
 }
 
 export default function ContactForm() {
+  const tForm = useTranslations("form");
+  const tBanner = useTranslations("banner");
   const [state, formAction] = useActionState(sendContactForm, initialState);
   const [logs, setLogs] = useState<string[]>([]);
   const formRef = useRef<HTMLFormElement>(null);
@@ -50,14 +54,14 @@ export default function ContactForm() {
 
   useEffect(() => {
     if (state.success) {
-      setLogs(["Message sent successfully."]);
+      setLogs([tForm("success")]);
       formRef.current?.reset();
-      showToast("Message sent successfully", "success");
+      showToast(tForm("success"), "success");
     } else if (state.message) {
         setLogs([`Error: ${state.message}`]);
-        showToast(state.message || "Failed to send message", "error");
+        showToast(state.message || tForm("error"), "error");
     }
-  }, [state, showToast]);
+  }, [state, showToast, tForm]);
 
   // Prevent Hydration Mismatch from Browser Extensions (SharkLocker, etc.)
   if (!mounted) {
@@ -73,21 +77,35 @@ export default function ContactForm() {
 
   return (
     <div className="relative">
+        <div
+            className="mb-6 p-4 border border-accent/30 bg-accent/10 text-accent text-sm font-mono rounded-sm"
+            role="status"
+            aria-live="polite"
+        >
+            {tBanner("emailNoticePrefix")}{" "}
+            <a
+                href="mailto:abdulazizz.dev@gmail.com"
+                className="underline hover:text-white"
+            >
+                abdulazizz.dev@gmail.com
+            </a>{" "}
+            {tBanner("emailNoticeSuffix")}
+        </div>
         <form ref={formRef} action={formAction} className="space-y-6">
             {/* Name Input */}
-            <div className="relative group">
+            <div className="relative group mb-2">
+                <label htmlFor="name" className="absolute left-0 -top-6 text-gray-300 text-[10px] font-mono uppercase transition-all duration-200 peer-focus:text-accent peer-not-placeholder-shown:text-accent pointer-events-none z-10">
+                    {tForm("name")}
+                </label>
                 <input
                     type="text"
                     id="name"
                     name="name"
                     required
                     placeholder=" "
-                    className="w-full bg-black/50 border border-white/10 p-4 text-white placeholder-transparent focus:outline-none focus:border-transparent peer backdrop-blur-md"
+                    className="w-full bg-black/50 border border-white/10 pt-4 pb-4 px-4 text-white placeholder-transparent focus:outline-none focus:border-transparent peer backdrop-blur-md transition-all"
                     aria-label="Name"
                 />
-                <label htmlFor="name" className="absolute left-4 top-4 text-gray-300 text-xs font-mono uppercase transition-all peer-focus:-top-6 peer-focus:left-0 peer-focus:text-accent peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:left-0 peer-not-placeholder-shown:text-accent pointer-events-none">
-                    Name
-                </label>
                 {/* Glowing Border Gradient */}
                 <div className="absolute inset-0 -z-10 rounded-sm p-[1px] opacity-0 peer-focus:opacity-100 transition-opacity">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50 blur-sm" />
@@ -96,19 +114,19 @@ export default function ContactForm() {
             </div>
 
             {/* Email Input */}
-            <div className="relative group">
+            <div className="relative group mb-2">
+                <label htmlFor="email" className="absolute left-0 -top-6 text-gray-300 text-[10px] font-mono uppercase transition-all duration-200 peer-focus:text-accent peer-not-placeholder-shown:text-accent pointer-events-none z-10">
+                    {tForm("email")}
+                </label>
                 <input
                     type="email"
                     id="email"
                     name="email"
                     required
                     placeholder=" "
-                    className="w-full bg-black/50 border border-white/10 p-4 text-white placeholder-transparent focus:outline-none focus:border-transparent peer backdrop-blur-md"
+                    className="w-full bg-black/50 border border-white/10 pt-4 pb-4 px-4 text-white placeholder-transparent focus:outline-none focus:border-transparent peer backdrop-blur-md transition-all"
                     aria-label="Email"
                 />
-                <label htmlFor="email" className="absolute left-4 top-4 text-gray-300 text-xs font-mono uppercase transition-all peer-focus:-top-6 peer-focus:left-0 peer-focus:text-accent peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:left-0 peer-not-placeholder-shown:text-accent pointer-events-none">
-                    Email
-                </label>
                  <div className="absolute inset-0 -z-10 rounded-sm p-[1px] opacity-0 peer-focus:opacity-100 transition-opacity">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50 blur-sm" />
                 </div>
@@ -116,19 +134,19 @@ export default function ContactForm() {
             </div>
 
             {/* Message Input */}
-            <div className="relative group">
+            <div className="relative group mb-2">
+                <label htmlFor="message" className="absolute left-0 -top-6 text-gray-300 text-[10px] font-mono uppercase transition-all duration-200 peer-focus:text-accent peer-not-placeholder-shown:text-accent pointer-events-none z-10">
+                    {tForm("message")}
+                </label>
                 <textarea
                     id="message"
                     name="message"
                     rows={5}
                     required
                     placeholder=" "
-                    className="w-full bg-black/50 border border-white/10 p-4 text-white placeholder-transparent focus:outline-none focus:border-transparent peer resize-none backdrop-blur-md"
+                    className="w-full bg-black/50 border border-white/10 pt-4 pb-4 px-4 text-white placeholder-transparent focus:outline-none focus:border-transparent peer resize-none backdrop-blur-md transition-all"
                     aria-label="Message"
                 />
-                <label htmlFor="message" className="absolute left-4 top-4 text-gray-300 text-xs font-mono uppercase transition-all peer-focus:-top-6 peer-focus:left-0 peer-focus:text-accent peer-not-placeholder-shown:-top-6 peer-not-placeholder-shown:left-0 peer-not-placeholder-shown:text-accent pointer-events-none">
-                    Message
-                </label>
                  <div className="absolute inset-0 -z-10 rounded-sm p-[1px] opacity-0 peer-focus:opacity-100 transition-opacity">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent to-transparent opacity-50 blur-sm" />
                 </div>

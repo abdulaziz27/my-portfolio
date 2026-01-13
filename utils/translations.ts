@@ -1,5 +1,5 @@
 export type Locale = "en" | "id";
-export type Namespaces = "nav" | "hero" | "about" | "workflow" | "tech" | "contact" | "form" | "banner";
+export type Namespaces = "nav" | "hero" | "about" | "workflow" | "tech" | "contact" | "form" | "banner" | "experience";
 
 type NamespaceMap = Record<Namespaces, Record<string, string>>;
 
@@ -7,6 +7,7 @@ export const translations: Record<Locale, NamespaceMap> = {
   en: {
     nav: {
       work: "Work",
+      experience: "Experience",
       process: "Process",
       status: "Status",
       contact: "Contact",
@@ -48,7 +49,7 @@ export const translations: Record<Locale, NamespaceMap> = {
       step1Title: "DISCOVERY & STRATEGY",
       step1Desc: "Understanding business requirements, identifying constraints, and evaluating technical feasibility.",
       step2Title: "ARCHITECTURE DESIGN",
-      step2Desc: "Planning system structure and selecting appropriate technologies (Next.js, React, Node.js) based on project needs.",
+      step2Desc: "Planning system structure and selecting appropriate technologies based on project needs.",
       step3Title: "DEVELOPMENT",
       step3Desc: "Building features using agile methodologies, focusing on code quality and performance.",
       step4Title: "DEPLOYMENT",
@@ -84,10 +85,16 @@ export const translations: Record<Locale, NamespaceMap> = {
       emailNoticePrefix: "Email service is temporarily unavailable. Please email me directly at",
       emailNoticeSuffix: "on the left panel.",
     },
+    experience: {
+      headingPrimary: "WORK",
+      headingAccent: "EXPERIENCE",
+      subheading: "Professional Journey",
+    },
   },
   id: {
     nav: {
       work: "Karya",
+      experience: "Pengalaman",
       process: "Proses",
       status: "Teknologi",
       contact: "Kontak",
@@ -164,6 +171,11 @@ export const translations: Record<Locale, NamespaceMap> = {
     banner: {
       emailNoticePrefix: "Layanan email sementara tidak aktif. Silakan kirim langsung ke",
       emailNoticeSuffix: "di panel kiri.",
+    },
+    experience: {
+      headingPrimary: "PENGALAMAN",
+      headingAccent: "KERJA",
+      subheading: "Perjalanan Profesional",
     },
   },
 };

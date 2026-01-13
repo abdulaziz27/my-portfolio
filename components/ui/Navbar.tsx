@@ -17,6 +17,7 @@ export default function Navbar() {
   const navLinks = useMemo(
     () => [
       { name: tNav("work"), href: "#work", id: "work" },
+      { name: tNav("experience"), href: "#experience", id: "experience" },
       { name: tNav("process"), href: "#process", id: "process" },
       { name: tNav("status"), href: "#status", id: "status" },
       { name: tNav("contact"), href: "#contact", id: "contact" },
@@ -89,7 +90,7 @@ export default function Navbar() {
       { threshold: 0.5 }
     );
 
-    const sections = ["hero", "work", "process", "status", "contact"];
+    const sections = ["hero", "work", "experience", "process", "status", "contact"];
     sections.forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);

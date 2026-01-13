@@ -87,6 +87,7 @@ export default function WorkflowSection() {
 
   return (
     <section 
+        id="process"
         ref={sectionRef} 
         className="relative w-full py-32 bg-[#050505] overflow-hidden text-white border-t border-white/10"
     >

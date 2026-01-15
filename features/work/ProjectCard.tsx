@@ -1,7 +1,7 @@
 "use client";
 
 import { Project } from "./projectData";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import SecureLink from "@/components/ui/SecureLink";
 
@@ -11,6 +11,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [imageError, setImageError] = useState(false);
 
   return (
     <SecureLink
@@ -34,13 +35,23 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Background Image Container */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <Image 
-            src={project.image} 
-            alt={project.title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
-          />
+          {!imageError ? (
+            <Image 
+              src={project.image} 
+              alt={project.title}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div 
+              className="w-full h-full opacity-30"
+              style={{
+                background: `linear-gradient(135deg, ${project.color}15 0%, ${project.color}05 50%, transparent 100%)`
+              }}
+            />
+          )}
           
           {/* 2. CRT SCANLINE OVERLAY */}
           <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] z-10" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/features/work/projectData";
@@ -16,10 +16,12 @@ export default function ProjectDetailView({ id }: { id: string }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const metaRef = useRef<HTMLDivElement>(null);
+  const [imageError, setImageError] = useState(false);
 
   const countryFlags: Record<string, string> = {
     "Japan": "🇯🇵",
     "Indonesia": "🇮🇩",
+    "Indonesia (Jogja)": "🇮🇩",
     "Singapore": "🇸🇬",
     "Vietnam": "🇻🇳",
     "Malaysia": "🇲🇾"
@@ -105,13 +107,23 @@ export default function ProjectDetailView({ id }: { id: string }) {
       {/* 1. HERO SECTION (THE HOOK) */}
       <section ref={heroRef} className="relative h-screen w-full flex items-center justify-center overflow-hidden">
         <div className="hero-image absolute inset-0 z-0">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            priority
-            className="object-cover opacity-40 blur-[2px] scale-105"
-          />
+          {!imageError ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              priority
+              className="object-cover opacity-40 blur-[2px] scale-105"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div 
+              className="w-full h-full opacity-40"
+              style={{
+                background: `linear-gradient(135deg, ${project.color}20 0%, ${project.color}10 50%, transparent 100%)`
+              }}
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black" />
         </div>
 

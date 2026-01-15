@@ -21,8 +21,8 @@ export const translations: Record<Locale, NamespaceMap> = {
       downloadCv: "Download resume PDF",
     },
     hero: {
-      intro: "Software Engineer • Creative Developer",
-      sub: "Building quality digital solutions for businesses. Specialized in ERP systems, E-commerce platforms, and interactive web experiences.",
+      intro: "I build full-stack internal platforms that streamline operations across teams.",
+      sub: "Focused on modular enterprise apps, role-based access control, dashboards, and reliable APIs.",
     },
     about: {
       tag: "Abdul Aziz",
@@ -30,16 +30,16 @@ export const translations: Record<Locale, NamespaceMap> = {
       titleLine1: "BRIDGING BUSINESS",
       titleLine2: "WITH ENGINEERING.",
       para1:
-        "Bachelor of Computer Science with a focus on scalable systems and high-performance UI. I build solutions that address real-world business needs for SMEs across Southeast Asia and Japan.",
+        "My recent work centers on an internal banking operations platform that consolidates HRIS, credit workflow, debtor management, and a document archive system into one portal.",
       para2:
-        "From ERP SYSTEMS to E-COMMERCE PLATFORMS, I focus on delivering quality digital products that help businesses grow and operate more efficiently.",
+        "I enjoy turning complex business processes into clear user flows, backed by secure authentication, configurable permissions, and a clean database schema.",
       education: "Education",
       specialization: "Specialization",
       stack: "Stack",
       infra: "Infrastructure",
-      educationValue: "B.Comp.Sc (Computer Science)",
-      specializationValue: "Web Dev | AI Integration",
-      stackValue: "Laravel / Python / Next.js / Tailwind CSS",
+            educationValue: "Bachelor of Computer Science (S.Kom)",
+      specializationValue: "Full-stack web development (internal tools, dashboards, RBAC, REST APIs)",
+      stackValue: "React / TypeScript / Tailwind CSS / Node.js (Express) / PostgreSQL",
       infraValue: "PostgreSQL / Docker / Vercel",
     },
     workflow: {
@@ -108,8 +108,8 @@ export const translations: Record<Locale, NamespaceMap> = {
       downloadCv: "Unduh CV PDF",
     },
     hero: {
-      intro: "Software Engineer • Creative Developer",
-      sub: "Membangun solusi digital berkualitas untuk bisnis. Spesialis ERP, E-commerce, dan pengalaman web interaktif.",
+      intro: "Saya membangun platform internal full-stack untuk merapikan proses operasional lintas tim.",
+      sub: "Fokus pada aplikasi enterprise modular, RBAC, dashboard analitik, dan API yang andal.",
     },
     about: {
       tag: "Abdul Aziz",
@@ -117,16 +117,16 @@ export const translations: Record<Locale, NamespaceMap> = {
       titleLine1: "MENJEMBATANI BISNIS",
       titleLine2: "DENGAN ENGINEERING.",
       para1:
-        "Sarjana Ilmu Komputer dengan fokus sistem skala dan UI berkinerja tinggi. Saya membangun solusi yang menjawab kebutuhan bisnis nyata untuk UKM di Asia Tenggara dan Jepang.",
+        "Proyek terbaru saya berfokus pada platform operasional internal perbankan yang menggabungkan HRIS, workflow kredit, manajemen debitur, dan sistem arsip dokumen dalam satu portal.",
       para2:
-        "Dari ERP SYSTEMS hingga E-COMMERCE PLATFORMS, saya fokus menghadirkan produk digital berkualitas yang membantu bisnis tumbuh dan lebih efisien.",
+        "Saya suka mengubah proses bisnis yang kompleks menjadi alur kerja yang jelas, didukung autentikasi aman, permission yang bisa dikonfigurasi, dan skema database yang rapi.",
       education: "Pendidikan",
       specialization: "Spesialisasi",
       stack: "Stack",
       infra: "Infrastruktur",
-      educationValue: "B.Comp.Sc (Ilmu Komputer)",
-      specializationValue: "Web Dev | Integrasi AI",
-      stackValue: "Laravel / Python / Next.js / Tailwind CSS",
+            educationValue: "Sarjana Komputer (S.Kom)",
+      specializationValue: "Pengembangan web full-stack (internal tools, dashboard, RBAC, REST API)",
+      stackValue: "React / TypeScript / Tailwind CSS / Node.js (Express) / PostgreSQL",
       infraValue: "PostgreSQL / Docker / Vercel",
     },
     workflow: {
